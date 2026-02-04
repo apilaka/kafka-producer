@@ -1,13 +1,18 @@
 package com.pilaka.kafka_producer.rest;
 
+import com.fasterxml.jackson.annotation.JsonTypeId;
+
 import java.math.BigDecimal;
 
 public class CreateProductRestModel {
+   @JsonTypeId
+   private String productId;
     private String title;
     private BigDecimal price;
     private Integer quantity;
 
-    public CreateProductRestModel(String title, BigDecimal price, Integer quantity) {
+    public CreateProductRestModel(String productId, String title, BigDecimal price, Integer quantity) {
+       this.productId=productId;
         this.title = title;
         this.price = price;
         this.quantity = quantity;
@@ -15,6 +20,14 @@ public class CreateProductRestModel {
 
     public CreateProductRestModel() {
 
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getTitle() {

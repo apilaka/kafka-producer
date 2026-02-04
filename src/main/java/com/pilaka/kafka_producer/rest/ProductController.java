@@ -28,7 +28,7 @@ public class ProductController {
         try {
             productService.createProduct(product);
             log.info("Product created successfully");
-            return ResponseEntity.status(HttpStatus.CREATED).body("Id");
+            return ResponseEntity.status(HttpStatus.CREATED).body(product.getTitle());
         } catch (Exception e) {
             log.info("failed to create Product");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ErrorMessage((Timestamp) new Date(), e.getMessage(), "/producs"));
